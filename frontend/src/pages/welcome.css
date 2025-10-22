@@ -1,0 +1,117 @@
+.welcome-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ff9aeb, #8ec5fc); /* pink + blue */
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 20px;
+}
+
+.welcome-content {
+  z-index: 2;
+  color: black;
+  max-width: 700px;
+}
+
+.welcome-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.welcome-title span {
+  color: black; /* soft yellow highlight */
+}
+
+.welcome-description {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.welcome-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.btn-join {
+  background: #ff80b5;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-join:hover {
+  background: #ff4da6;
+  transform: translateY(-3px);
+}
+
+.login-text {
+  font-size: 0.95rem;
+  color: #f8f8f8;
+}
+
+.login-link {
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: underline;
+}
+
+.login-link:hover {
+  color: #ffe57f;
+}
+
+/* Floating circles */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  animation: float 8s infinite ease-in-out;
+}
+
+.circle1 {
+  width: 180px;
+  height: 180px;
+  top: -60px;
+  left: -60px;
+}
+
+.circle2 {
+  width: 120px;
+  height: 120px;
+  bottom: 80px;
+  right: 40px;
+  animation-delay: 2s;
+}
+
+.circle3 {
+  width: 90px;
+  height: 90px;
+  bottom: -40px;
+  left: 50%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
