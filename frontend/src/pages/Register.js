@@ -6,6 +6,7 @@ import "./auth.css";
 export default function Register() {
   const navigate = useNavigate();
 
+  // ✅ Define all state variables
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,38 +19,34 @@ export default function Register() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // handle input changes
+  // ✅ Update input fields
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // handle form submit
+  // ✅ Handle form submission
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
-    // ✅ Validation checks
+    // Client-side validation
     if (!/^\d{10}$/.test(formData.phone)) {
-      alert("Phone number must be exactly 10 digits");
-      return;
+      return setError("Phone number must be exactly 10 digits");
     }
-
     if (!/^[a-zA-Z0-9._%+-]+@vitstudent\.ac\.in$/.test(formData.email)) {
-      alert("Email must be in the format name@vitstudent.ac.in");
-      return;
+      return setError("Email must be in the format name@vitstudent.ac.in");
     }
 
     try {
-      // ✅ Use axios (works locally)
-      const res = await axios.post("https://campusbuzz-vpsf.onrender.com/api/auth/register", formData);
+      const res = await axios.post(
+        "https://campusbuzz-vpsf.onrender.com/api/auth/register", // Change to your deployed backend URL when hosting
+        formData
+      );
 
-      // success check
-      if (res.data.message === "User registered successfully" || res.status === 201) {
-        setSuccess("🎉 Registration Successful! Redirecting to login...");
-        setTimeout(() => {
-          navigate("/login");
-        }, 1500);
+      if (res.data.message === "User registered successfully") {
+        setSuccess("🎉 Registration successful! Redirecting...");
+        setTimeout(() => navigate("/login"), 1500);
       } else {
         setError(res.data.message || "Something went wrong");
       }
