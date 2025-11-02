@@ -29,7 +29,7 @@ function App() {
         {/* Feature Routes */}
         <Route path="/announcements" element={<Announcements />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/lostandfound" element={<LostandFound />} />
+        <Route path="/lostfound" element={<LostandFound />} />
         <Route path="/roommates" element={<Roommates />} />
         <Route path="/classmates" element={<Classmates />} />
 
