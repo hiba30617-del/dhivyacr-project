@@ -1,31 +1,34 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "./shared.css";
 
 export default function Dashboard() {
   const navigate = useNavigate();
 
+  // ✅ Redirect unauthenticated users to login
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) navigate("/login");
+  }, [navigate]);
+
+  // ✅ Handle logout
   const handleLogout = () => {
-  // Remove stored token and user info
-  localStorage.removeItem("token");
-  localStorage.removeItem("user");
+    // Remove token from storage
+    localStorage.removeItem("token");
 
-  // Redirect to login page
-  navigate("/login");
-};
-
+    // Redirect to login page
+    navigate("/login");
+  };
 
   return (
-   <div className="page-container">
-      {/* Logout button at top right */}
-      <div className="logout-container">
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h1>Welcome to CampusBuzz 🎓</h1>
         <button className="btn logout-btn" onClick={handleLogout}>
           Logout
         </button>
       </div>
-         <div className="dashboard-header">
-        <h1>🎓 Student Community Dashboard</h1>
-      </div>
+
 
       <div className="features-grid">
         <div className="feature-box">
