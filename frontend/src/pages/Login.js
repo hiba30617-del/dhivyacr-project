@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./auth.css";
-import API from "../utils/api"; // keep this if you want to switch easily to cloud URL later
+// keep this if you want to switch easily to cloud URL later
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -14,7 +14,7 @@ export default function Login() {
     e.preventDefault();
     try {
       // OPTION 1: use axios directly for local
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
+      const res = await axios.post("https://campusbuzz-vpsf.onrender.com/api/auth/login", {
         email,
         password,
       });

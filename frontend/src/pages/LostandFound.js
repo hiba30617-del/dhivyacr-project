@@ -15,7 +15,7 @@ export default function LostAndFound() {
   // Fetch all items
   const fetchItems = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/lostfound");
+      const res = await axios.get("https://campusbuzz-vpsf.onrender.com/api/lostfound");
       setItems(res.data);
     } catch (err) {
       console.error("Error fetching items:", err);
@@ -43,7 +43,7 @@ export default function LostAndFound() {
     if (newImage) formData.append("image", newImage);
 
     try {
-      const res = await axios.post("http://localhost:5000/api/lostfound", formData, {
+      const res = await axios.post("https://campusbuzz-vpsf.onrender.com/api/lostfound", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
@@ -63,7 +63,7 @@ export default function LostAndFound() {
     if (!window.confirm("Are you sure you want to delete this item?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/lostfound/${id}`);
+      await axios.delete(`https://campusbuzz-vpsf.onrender.com/api/lostfound/${id}`);
       setItems(items.filter((item) => item._id !== id));
     } catch (err) {
       console.error("Error deleting item:", err);
@@ -128,7 +128,7 @@ export default function LostAndFound() {
             </p>
             {item.image && (
               <img
-                src={`http://localhost:5000/uploads/${item.image}`}
+                src={`https://campusbuzz-vpsf.onrender.com/uploads/${item.image}`}
                 alt={item.title}
                 style={{
                   maxWidth: "250px",

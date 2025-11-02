@@ -42,7 +42,7 @@ export default function Register() {
 
     try {
       // ✅ Use axios (works locally)
-      const res = await axios.post("http://localhost:5000/api/auth/register", formData);
+      const res = await axios.post("https://campusbuzz-vpsf.onrender.com/api/auth/register", formData);
 
       // success check
       if (res.data.message === "User registered successfully" || res.status === 201) {

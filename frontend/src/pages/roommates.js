@@ -35,7 +35,7 @@ export default function Roommates() {
     if (!form.block || !form.roomNo || !form.bedCount || !form.name || !form.gender) return;
 
     try {
-      await axios.post("http://localhost:5000/api/roommates", form);
+      await axios.post("https://campusbuzz-vpsf.onrender.com/api/roommates", form);
       setForm({ block: "", roomNo: "", bedCount: "", name: "", gender: "" });
       setSuccessMsg("✅ Roommate added successfully!");
       setTimeout(() => setSuccessMsg(""), 3000);
@@ -51,7 +51,7 @@ export default function Roommates() {
     if (!filter.block || !filter.roomNo) return;
 
     try {
-      const res = await axios.get(`http://localhost:5000/api/roommates?block=${filter.block}&roomNo=${filter.roomNo}`);
+      const res = await axios.get(`https://campusbuzz-vpsf.onrender.com/api/roommates?block=${filter.block}&roomNo=${filter.roomNo}`);
       setFilteredRoommates(res.data);
     } catch (err) {
       console.error("Error fetching roommates:", err);

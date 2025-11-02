@@ -25,7 +25,7 @@ export default function Classmates() {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/classmates", newMate);
+      await axios.post("https://campusbuzz-vpsf.onrender.com/api/classmates", newMate);
       setNewMate({ name: "", registerNumber: "", department: "", classroomNumber: "" });
       setSuccessMsg("Classmate added successfully!");
       setTimeout(() => setSuccessMsg(""), 3000); // hide message after 3 seconds
@@ -41,7 +41,7 @@ export default function Classmates() {
     if (!search.department || !search.classroomNumber) return;
 
     try {
-      const res = await axios.get("http://localhost:5000/api/classmates/filter", {
+      const res = await axios.get("https://campusbuzz-vpsf.onrender.com/api/classmates/filter", {
         params: {
           department: search.department,
           classroomNumber: search.classroomNumber,

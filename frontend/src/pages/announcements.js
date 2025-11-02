@@ -11,7 +11,7 @@ export default function Announcements() {
   // Fetch announcements from backend
   const fetchAnnouncements = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/announcements");
+      const res = await axios.get("https://campusbuzz-vpsf.onrender.com/api/announcements");
       setAnnouncements(res.data);
     } catch (err) {
       console.error("Error fetching announcements:", err);
@@ -32,7 +32,7 @@ export default function Announcements() {
     if (!form.title || !form.description) return;
 
     try {
-      await axios.post("http://localhost:5000/api/announcements", form);
+      await axios.post("https://campusbuzz-vpsf.onrender.com/api/announcements", form);
       setForm({ title: "", description: "" });
       fetchAnnouncements(); // Refresh list
     } catch (err) {
@@ -43,7 +43,7 @@ export default function Announcements() {
   // Optional: handle delete
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/announcements/${id}`);
+      await axios.delete(`https://campusbuzz-vpsf.onrender.com//api/announcements/${id}`);
       fetchAnnouncements();
     } catch (err) {
       console.error("Error deleting announcement:", err);

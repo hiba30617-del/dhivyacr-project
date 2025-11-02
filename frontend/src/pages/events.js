@@ -19,7 +19,7 @@ export default function Events() {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/events");
+        const res = await axios.get("https://campusbuzz-vpsf.onrender.com/api/events");
         setEvents(res.data);
       } catch (err) {
         console.error("Error fetching events:", err);
@@ -39,7 +39,7 @@ export default function Events() {
     if (!newEvent.title || !newEvent.description || !newEvent.date) return;
 
     try {
-      const res = await axios.post("http://localhost:5000/api/events", newEvent);
+      const res = await axios.post("https://campusbuzz-vpsf.onrender.com/api/events", newEvent);
       setEvents([res.data, ...events]); // add the new event to the list
       setNewEvent({ title: "", description: "", date: "" });
       setSuccessMsg("Event added successfully!");
@@ -53,7 +53,7 @@ export default function Events() {
     if (!window.confirm("Are you sure you want to delete this event?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/events/${id}`);
+      await axios.delete(`https://campusbuzz-vpsf.onrender.com/api/events/${id}`);
       setEvents(events.filter((event) => event._id !== id));
     } catch (err) {
       console.error("Error deleting event:", err);
